@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('clickping:server');
+var debug = require('debug')('express-pandaput:server');
 var http = require('http');
 
 /**

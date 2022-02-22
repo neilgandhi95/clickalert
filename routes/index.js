@@ -20,10 +20,14 @@ router.get('/neil', async function(req, res, next) {
 	console.log(req.query.hello);
 	const email = req.query.hello;
 
-	const person = await enrichContact(email);
-	console.log(person);
+	try {
+		const person = await enrichContact(email);
+		console.log(person);
 
-  	res.render('page', { person: person });
+	  	res.render('page', { person: person });
+	} catch(e) {
+		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
+	}
 });
 
 

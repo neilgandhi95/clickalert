@@ -19,20 +19,20 @@
 
 	<title>OnePageKit</title>
 	<meta name="title" content="OnePageKit">
-	<meta name="description" content="Slack notification when someone visits your site">
+	<meta name="description" content="Personalized one-pagers for your prospects">
 
 	<!-- Facebook tags -->
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://onepagekit.com/">
 	<meta property="og:title" content="OnePageKit">
-	<meta property="og:description" content="Slack notification when someone visits your site">
+	<meta property="og:description" content="Personalized one-pagers for your prospects">
 	<meta property="og:image" content="https://onepagekit.com/images/splash/og.png">
 
 	<!-- Twitter tags -->
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://onepagekit.com/">
 	<meta property="twitter:title" content="OnePageKit">
-	<meta property="twitter:description" content="Slack notification when someone visits your site">
+	<meta property="twitter:description" content="Personalized one-pagers for your prospects">
 	<meta property="twitter:image" content="https://onepagekit.com/images/splash/og.png">
 	
 	<!-- Tailwind -->
@@ -61,7 +61,7 @@
 
 
 	<!-- Full body -->
-	<section class="max-w-5xl mx-auto flex items-start px-8 sm:px-0">
+	<section class="max-w-5xl mx-auto flex items-start px-8 md:px-0">
 
 		<!-- Profile -->
 		<div class="w-1/5 text-slate-500 text-sm mr-28 pt-16 flex-none hidden sm:block">
@@ -116,7 +116,7 @@
 
 				<!-- Headline -->
 				<p class="text-slate-900 font-extrabold text-2xl sm:text-3xl mt-12">Hey <%=person.name%>! 👋</p>
-				<p class="text-slate-700 text-lg mt-2">With OnePageKit you can make personalized one-pagers for your prospects. On the left you can share info about <%=person.company%>. Below you can link to case studies, share videos, and embed your calendar. Your name, title, company was pulled from my CRM. No coding required and everything is customizable.</p>
+				<p class="text-slate-700 text-lg mt-2">With onepagekit you can make templatized one-pagers for your prospects. It's a great place to share links, videos, and other information. Personalize with data from your CRM. No code to make!</p>
 			</section>
 			
 
@@ -163,11 +163,41 @@
 		<p class="text-slate-500 text-xl text-center">Supports Calendly, Chilipiper, Outreach, and more</p>
 
 		<div class="mt-6">
-			<div class="calendly-inline-widget" data-url="https://calendly.com/neil-pandapose/30min" style="min-width:320px;height:630px;"></div>
+			<div class="calendly-inline-widget" data-url="https://calendly.com/neil-pandapose/30min?hide_gdpr_banner=1" style="min-width:320px;height:630px;"></div>
 			<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 		</div>
 	</section>
 
 </body>
+
+
+<!-- Slack notification -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	(function() {
+
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const email = urlParams.get('hello')
+		console.log(email);
+
+		// If no thread has been passed by express, don't ping Slack
+		if (!email) {
+			return;
+		}
+
+		var data = {};
+		data.email = "onepage: " + email;
+
+		$.ajax({
+			type: "POST",
+			url: 'https://godsend.ai/watch/triggerWatch',
+			data: data,
+			success: function (ret) {
+			}
+		});
+	})();
+
+</script>
 
 </html>

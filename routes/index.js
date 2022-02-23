@@ -16,9 +16,8 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/neil', async function(req, res, next) {
-	console.log(req.query.hello);
-	const email = req.query.hello;
+router.get('/neil/:email', async function(req, res, next) {
+	const email = req.params.email;
 
 	try {
 		const person = await enrichContact(email);

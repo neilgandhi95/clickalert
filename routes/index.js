@@ -16,14 +16,34 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/neil/:email', async function(req, res, next) {
+router.get('/neil/:template/:name/:domain', async function(req, res, next) {
+
+	const name = req.params.name;
+	const domain = req.params.domain;
+
+	try {
+		const org = await enrichDomain(domain);
+		const person = {
+			name: name,
+			org: org
+		}
+		console.log(person);
+
+	  	res.render('page', { person: person });
+	} catch(e) {
+		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
+	}
+});
+
+
+router.get('/avery/:email', async function(req, res, next) {
 	const email = req.params.email;
 
 	try {
 		const person = await enrichContact(email);
 		console.log(person);
 
-	  	res.render('page', { person: person });
+	  	res.render('avery', { person: person });
 	} catch(e) {
 		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
 	}
@@ -38,66 +58,62 @@ module.exports = router;
 // -----------------
 // Enrich email with Apollo information
 // -----------------
-async function enrichContact(email) {
-	console.log("ENRCIHING: " + email);
+async function enrichDomain(domain) {
+	console.log("ENRCIHING: " + domain);
 
 	// Empty check
-	if (email == "") {
-		throw Error("Not a valid email");
+	if (domain == "") {
+		throw Error("Not a valid domain");
 	}
 
 	// First check if data is cached
-	if (cachedResponses[email]) {
-		return cachedResponses[email];
+	if (cachedResponses[domain]) {
+		return cachedResponses[domain];
 	}
 
 	// Get data back in JSON
 	var headers = {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
+		'Cache-Control': 'no-cache'
 	};
 
 	// API key
 	var data = {
 		"api_key": "MRfLnf4OP-tftTPfL9F9rg",
-		"email": email
+		"domain": domain
 	}
+
+	console.log(data);
 
 
 	try {
 
 		// Ping API
-		const response = await axios.post("https://api.apollo.io/v1/people/match", data, {
+		const response = await axios.get("https://api.apollo.io/v1/organizations/enrich?api_key=MRfLnf4OP-tftTPfL9F9rg&domain=" + domain, {
 			headers: headers
 		});
 
 		// Check for errors
-		if (!response.data || !response.data.person) {
+		if (!response.data) {
 			throw Error("Apollo error: " + response.data);
 		}
 
-		const person = response.data.person;
-
-		const name = person.first_name;
-		const title = person.title;
-		const company = person.organization.name;
+		const company = response.data.organization;
+		console.log(company);
 
 		var essentialData = {
-			name: person.first_name ??= email.split("@")[0],
-			title: person.title ??= "",
-			company: person.organization.name ??= email.split("@")[1],
-			email: email
+			name: company.name,
+			logo: company.logo_url,
+			domain: domain
 		}
 
 		// Clean up data
-		essentialData.company = essentialData.company.split(",")[0].split("-")[0];
-		essentialData.company = essentialData.company.replace("Inc", "");
-		essentialData.company = essentialData.company.replace("LLC", "");
-		essentialData.logo = person.organization.logo_url;
-
-		essentialData.title = essentialData.title.split(",")[0].split("-")[0];
+		essentialData.name = essentialData.name.split(",")[0].split("-")[0].split("-")[0]
+		essentialData.name = essentialData.name.replace("Inc", "");
+		essentialData.name = essentialData.name.replace("LLC", "");
 
 		// Cache response
-		cachedResponses[email] = essentialData;
+		cachedResponses[domain] = essentialData;
 
 		return essentialData;
 

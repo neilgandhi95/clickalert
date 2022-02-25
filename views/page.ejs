@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>OnePageKit</title>
+	<title>OnePageKit1</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
@@ -16,32 +16,34 @@
 	<!-- Custom font -->
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-
-	<title>OnePageKit</title>
-	<meta name="title" content="OnePageKit">
-	<meta name="description" content="Personalized one-pagers for your prospects">
-
-	<!-- Facebook tags -->
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://onepagekit.com/">
-	<meta property="og:title" content="OnePageKit">
-	<meta property="og:description" content="Personalized one-pagers for your prospects">
-	<meta property="og:image" content="https://onepagekit.com/images/splash/og.png">
-
-	<!-- Twitter tags -->
-	<meta property="twitter:card" content="summary_large_image">
-	<meta property="twitter:url" content="https://onepagekit.com/">
-	<meta property="twitter:title" content="OnePageKit">
-	<meta property="twitter:description" content="Personalized one-pagers for your prospects">
-	<meta property="twitter:image" content="https://onepagekit.com/images/splash/og.png">
-	
-	<!-- Tailwind -->
-	<link rel="stylesheet" href="/css/output.css?v=3">
-
 	<!-- User data -->
 	<script>
 		const person = <%-JSON.stringify(person)%>
 	</script>
+
+
+	<title>OnePageKit2</title>
+	<meta name="title" content="OnePageKit3">
+	<meta name="description" content="More leads to <%- person.org.name %>?">
+
+	<!-- Facebook tags -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://onepagekit.com/">
+	<meta property="og:title" content="More leads to <%- person.org.name %>?">
+	<meta property="og:description" content="More leads to <%- person.org.name %>?">
+	<meta property="og:image" content="https://d33w6qmiqoj74y.cloudfront.net/RlYZir00-<%- person.name %>@<%- person.org.domain %>-<%- person.name %>.png">
+
+	<!-- Twitter tags -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://onepagekit.com/">
+	<meta property="twitter:title" content="OnePageKit5">
+	<meta property="twitter:description" content="More leads to <%- person.org.name %>?">
+	<meta property="twitter:image" content="https://d33w6qmiqoj74y.cloudfront.net/RlYZir00-<%- person.name %>@<%- person.org.domain %>-<%- person.name %>.png">
+	
+	<!-- Tailwind -->
+	<link rel="stylesheet" href="/css/output.css?v=3">
+
+	
 </head>
 
 <body class="overflow-x-hidden antialiased text-left">
@@ -51,7 +53,7 @@
 		<a href="/" class="text-slate-800 font-medium text-md hover:text-sky-500 transition" target="_blank">
 			<div class="flex items-center px-8 py-3 flex items-center">
 				<img src="/images/splash/logo.png" class="h-10 rounded-md border-4 border-white mr-2">
-				<span>OnePageKit</span>
+				<span>OnePageKit6</span>
 			</div>
 		</a>
 	</nav>
@@ -153,19 +155,40 @@
 			<!-- Their logo -->
 			<section>
 				<div>
-					<img src="<%=person.logo%>" class="h-28 -mt-12 rounded-full border-4 border-white">
+					<img src="<%=person.org.logo%>" class="h-28 -mt-12 rounded-full border-4 border-white">
 				</div>
 
 				<!-- Headline -->
-				<p class="text-slate-900 font-extrabold text-2xl sm:text-3xl mt-12">Hey <%=person.name%>! 👋</p>
-				<p class="text-slate-700 text-lg mt-2">With OnePageKit you can make templatized one-pagers for your prospects. It's a great place to share links, videos, and other information about <%=person.company%>. Personalize each page with CRM data about your prospect like I did here. No code to make!</p>
+				<p class="text-slate-900 font-extrabold text-2xl sm:text-3xl mt-12 capitalize">Hey <%=person.name%>! 👋</p>
+				<p class="text-slate-700 text-lg mt-2">With OnePageKit you can make templatized one-pagers for your prospects. <br><br>Here are the features:</p>
+			</section>
+
+			<!-- Feature -->
+			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Automatically personalized</p>
+				<p class="text-slate-700">Link preview is automatically personalized to show your prospect's name and logo</p>
+			</section>
+
+			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Track everything</p>
+				<p class="text-slate-700">Did they click the link? How many times? How much time did they spend on the page? Did they share it in Slack? Which links on this page did they click? You'll have all the answers</p>
+			</section>
+
+			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Easily shareable</p>
+				<p class="text-slate-700">With everything inside one link, it's easy for your prospects to pass it around the company</p>
+			</section>
+
+			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Latest version, always</p>
+				<p class="text-slate-700">Easily update your one-pager with your latest pitch</p>
 			</section>
 			
 
 			<!-- Case studies -->
 			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
-				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Case studies</p>
-				<p class="text-slate-700">Crush it as a <%=person.title%> <- Notice how I used your title there</p>
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Share links</p>
+				<p class="text-slate-700">Link to important resources</p>
 
 				<div class="space-y-4 text-sky-500 mt-4">
 					<div>
@@ -181,17 +204,11 @@
 			</section>
 
 
-			<!-- Share text -->
-			<section class="max-w-3xl mx-auto text-sky-500 text-md text-left">
-				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Share use cases, FAQ's, etc</p>
-				<p class="text-slate-700">Get a Slack notification when someone visits the page</p>
-			</section>
-
 			<!-- Video -->
 			<section class="max-w-3xl mx-auto ">
 
-				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Product demo</p>
-				<p class="text-slate-700">Embed videos from Loom, Vidyard, BomBomb, Youtube, etc</p>
+				<p class="text-xl text-slate-900 font-semibold tracking-tight dark:text-slate-50 mb-2">Embed videos</p>
+				<p class="text-slate-700">Show your product demo. Embed from Loom, Vidyard, BomBomb, Youtube, etc</p>
 
 				<!-- Embed -->
 				<div class="mt-4">
@@ -209,8 +226,8 @@
 	<section class="max-w-7xl mx-auto py-28 mt-28 border-t border-slate-200">
 
 		<div class="px-4">
-			<p class="text-4xl text-slate-800 font-bold tracking-tight dark:text-slate-50 mb-4 text-center">Want a one-pager?</p>
-			<p class="text-slate-500 text-xl text-center">Book some time with me below and I'll help you out!</p>
+			<p class="text-4xl text-slate-800 font-bold tracking-tight dark:text-slate-50 mb-4 text-center">Add your calendar</p>
+			<p class="text-slate-500 text-xl text-center">Embed from Calendly, Outreach, Chilipiper, more</p>
 		</div>
 
 		<div class="mt-6">
@@ -227,7 +244,7 @@
 	(function() {
 
 		var data = {};
-		data.email = "onepage: " + "<%- person.email %>";
+		data.email = "onepage: " + "<%- person.name %>";
 
 		$.ajax({
 			type: "POST",

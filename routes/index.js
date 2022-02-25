@@ -18,6 +18,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/neil/:template/:name/:domain', async function(req, res, next) {
 
+	console.log("----------")
+	console.log(req.url);
+	console.log(req.get('user-agent'));
+	console.log("----------")
+
+
 	const name = req.params.name;
 	const domain = req.params.domain;
 
@@ -27,7 +33,6 @@ router.get('/neil/:template/:name/:domain', async function(req, res, next) {
 			name: name,
 			org: org
 		}
-		console.log(person);
 
 	  	res.render('page', { person: person });
 	} catch(e) {
@@ -41,7 +46,6 @@ router.get('/avery/:email', async function(req, res, next) {
 
 	try {
 		const person = await enrichContact(email);
-		console.log(person);
 
 	  	res.render('avery', { person: person });
 	} catch(e) {
@@ -59,7 +63,6 @@ module.exports = router;
 // Enrich email with Apollo information
 // -----------------
 async function enrichDomain(domain) {
-	console.log("ENRCIHING: " + domain);
 
 	// Empty check
 	if (domain == "") {
@@ -83,8 +86,6 @@ async function enrichDomain(domain) {
 		"domain": domain
 	}
 
-	console.log(data);
-
 
 	try {
 
@@ -99,7 +100,6 @@ async function enrichDomain(domain) {
 		}
 
 		const company = response.data.organization;
-		console.log(company);
 
 		var essentialData = {
 			name: company.name,

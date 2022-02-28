@@ -21,6 +21,10 @@ router.get('/neil/:template/:name/:domain', async function(req, res, next) {
 	console.log("----------")
 	console.log(req.url);
 	console.log(req.get('user-agent'));
+	// console.log(req.ipInfo);
+	const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
+	console.log(g.data.city + "/" + g.data.region);
+	  // .then(({ data }) => console.log(data))
 	console.log("----------")
 
 
@@ -35,6 +39,30 @@ router.get('/neil/:template/:name/:domain', async function(req, res, next) {
 		}
 
 	  	res.render('page', { person: person });
+	} catch(e) {
+		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
+	}
+});
+
+router.get('/ryan/:template/:name/:domain', async function(req, res, next) {
+
+	console.log("----------")
+	console.log(req.url);
+	console.log(req.get('user-agent'));
+	console.log("----------")
+
+
+	const name = req.params.name;
+	const domain = req.params.domain;
+
+	try {
+		const org = await enrichDomain(domain);
+		const person = {
+			name: name,
+			org: org
+		}
+
+	  	res.render('ryan', { person: person });
 	} catch(e) {
 		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
 	}

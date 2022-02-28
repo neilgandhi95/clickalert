@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Log IP address
+const expressip = require('express-ip');
 
 
 // S3
@@ -13,6 +15,9 @@ var indexRouter = require('./routes/index');
 
 
 var app = express();
+
+// Log IP's
+app.use(expressip().getIpInfoMiddleware);
 
 
 // view engine setup

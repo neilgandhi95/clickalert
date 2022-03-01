@@ -16,14 +16,16 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/neil/:template/:name/:domain', async function(req, res, next) {
+router.get('/neil/:template/:domain/:name', async function(req, res, next) {
 
 	console.log("----------")
-	console.log(req.url);
-	console.log(req.get('user-agent'));
+	// console.log(req.url);
+	// console.log(req.get('user-agent'));
+
+	printLogs(req);
 	// console.log(req.ipInfo);
-	const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
-	console.log(g.data.city + "/" + g.data.region);
+	// const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
+	// console.log(g.data.city + "/" + g.data.region);
 	  // .then(({ data }) => console.log(data))
 	console.log("----------")
 
@@ -40,7 +42,7 @@ router.get('/neil/:template/:name/:domain', async function(req, res, next) {
 
 	  	res.render('page', { person: person });
 	} catch(e) {
-		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
+		res.status(500).send("Something went wrong. Please email neil@paage.io");
 	}
 });
 
@@ -150,4 +152,36 @@ async function enrichDomain(domain) {
 		throw Error("Apollo error");
 	}
 }
+
+//------------
+// Print out all the analytics for demo purposes
+//------------
+function printLogs(req) {
+
+
+	const ua = req.get('user-agent');
+	// console.log(ua);
+	if (ua.includes("Slackbot")) {
+		writeLog(req, " shared in Slack!");
+	} else if (ua.includes("LinkedInBot")) {
+		writeLog(req, " shared in LinkedIn!");
+	}
+	// console.log(req.url);
+	// console.log(req.get('user-agent'));
+	// console.log(req.ipInfo);
+	// const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
+	// console.log(g.data.city + "/" + g.data.region);
+	  // .then(({ data }) => console.log(data))
+}
+
+	function writeLog(req, content) {
+		console.log(req.params.name + " from " + req.params.domain + " page was " + content);
+	}
+
+
+
+
+
+
+
 

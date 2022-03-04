@@ -192,6 +192,11 @@ function printLogs(req) {
 //--------------------------
 async function getCompany(domain) {
 
+	// Cached return
+	if (cachedResponses[domain]) {
+		return cachedResponses[domain];
+	}
+
 	// If all else fails, return this
 	const baseReturn = {
 		logo_url: "https://logo.clearbit.com/" + domain,
@@ -199,7 +204,6 @@ async function getCompany(domain) {
 		domain: domain
 	}
 
-	console.log("swag")
 	// First connect to our our Crunchbase clone
 	try {
 		await connectToDatabase();
@@ -244,6 +248,7 @@ async function getCompany(domain) {
 
 			// Clearbit had results, but nothing relevant. Try to see if we can make it work with placeholder results
 			// It may still fail though if there the logo_url data is invalid.
+			cachedResponses[domain] = domain;
 			return baseReturn;
 		}
 

@@ -19,7 +19,7 @@
 	<!-- User data -->
 	<script>
 		const person = <%-JSON.stringify(person)%>
-		console.log(person);
+		// console.log(person);
 	</script>
 
 
@@ -63,15 +63,16 @@
 
 	<!-- Their logo -->
 	<div class="mx-auto max-w-5xl relative h-full -mt-16 max-w-5xl px-8 lg:px-0">
-		<img src="<%- person.org.logo_url %>" class="h-32 rounded-xl -bottom-16 border-white left-0 shadow-sm" id="logo" crossorigin="anonymous"/>
+		<img src="<%- person.org.logo_url %>" class="h-32 rounded-xl -bottom-16 shadow-sm" id="logo" crossorigin="anonymous" />
 		<!-- <img src="https://logo.clearbit.com/onesignal.com" class="h-32 rounded-2xl -bottom-16 border-white left-0" id="logo"> -->
 	</div>
 
+
 	<!-- Full body -->
-	<section class="max-w-5xl mx-auto flex items-start px-8 lg:px-0 mt-10">
+	<section class="max-w-5xl mx-auto lg:flex lg:space-x-20 items-start px-8 lg:px-0 mt-10 transition opacity-0 translate-y-4 duration-1000" data-replace='{ "opacity-0": "opacity-100", "translate-y-4": "translate-y-0"}'>
 
 		<!-- Content -->
-		<div class="flex-grow space-y-12 lg:pr-20">
+		<div class="flex-grow space-y-12">
 
 			<!-- Headline -->
 			<section>
@@ -139,18 +140,20 @@
 
 
 		<!-- Profile -->
-		<div class="w-1/5 text-slate-500 text-sm flex-none hidden lg:block">
-
-			<!-- Logo -->
-			<img src="/images/splash/logo_cropped.png" class="w-16 rounded-md" id="myLogo">
+		<div class="w-full mt-16 lg:mt-0 lg:w-1/5 text-slate-500 text-sm flex-none">
 
 			<div class="mt-4 space-y-6 divide-y divide-slate-200">
 
-				<!-- Name -->
-				<div class="mt-4">
-					<a href="/" class="text-slate-800 font-medium text-lg hover:text-sky-500 transition" target="_blank">Paage</a>
-					<p class="mt-2">Track your pitch</p>
-				</div>			
+				<div class="hidden lg:block">
+					<!-- Logo -->
+					<img src="/images/splash/logo_cropped.png" class="w-16 rounded-md" id="myLogo">
+
+					<!-- Name -->
+					<div class="mt-4">
+						<a href="/" class="text-slate-800 font-medium text-lg hover:text-sky-500 transition" target="_blank">Paage</a>
+						<p class="mt-2">Track your pitch</p>
+					</div>	
+				</div>
 
 				<!-- Customers -->
 				<div class="pt-6 text-sm select-none">
@@ -246,28 +249,46 @@
 <script src="https://unpkg.com/fast-average-color/dist/index.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script>
-	const fac = new FastAverageColor();
-	const container = document.getElementById("cover");
+<script>	
 
-	const color = fac.getColor(document.getElementById("logo"), {algorithm: "simple"});
+	$("#logo").one('load', function() {
+		colorCover();
+		animateIn();
+	}).on('error', function(e) {
+		colorCover();
+		animateIn();
+	}).attr('src', "<%- person.org.logo_url %>");
 
-	console.log(color);
 
-	container.style.backgroundColor = color.rgba;
-	container.style.color = color.isDark ? '#fff' : '#000';
-	// {
-	//     error: null,
-	//     rgb: 'rgb(255, 0, 0)',
-	//     rgba: 'rgba(255, 0, 0, 1)',
-	//     hex: '#ff0000',
-	//     hexa: '#ff0000ff',
-	//     value: [255, 0, 0, 255],
-	//     isDark: true,
-	//     isLight: false
-	// }
+	function colorCover() {
+		const fac = new FastAverageColor();
+		const container = document.getElementById("cover");
+
+		const color = fac.getColor(document.getElementById("logo"), {algorithm: "simple"});
+		container.style.backgroundColor = color.rgba;
+		container.style.color = color.isDark ? '#fff' : '#000';		
+		console.log(color);
+	}
+
+	function animateIn() {
+		var replacers = document.querySelectorAll('[data-replace]');
+		for(var i=0; i<replacers.length; i++){
+			let replaceClasses = JSON.parse(replacers[i].dataset.replace.replace(/'/g, '"'));
+			Object.keys(replaceClasses).forEach(function(key) {
+				replacers[i].classList.remove(key);
+				replacers[i].classList.add(replaceClasses[key]);
+			});
+		}
+	}
+
 </script>
 
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(){
+		
+	});
+</script>
 
 <!-- Slack notification -->
 

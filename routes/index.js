@@ -39,13 +39,19 @@ router.get('/neil/:template/:domain/:name', async function(req, res, next) {
 
 	try {
 		const org = await getCompany(domain);
+		cachedResponses[domain] = org;
 		console.log(org);
+
 		const person = {
 			name: name,
 			org: org
 		}
 
-	  	res.render('page', { person: person });
+		const me = {
+			logo_url: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/msrhhprwrd683cdgb5gc"
+		}
+
+	  	res.render('page', { person: person, me: me });
 	} catch(e) {
 		res.status(500).send("Something went wrong. Please email neil@paage.io");
 	}
@@ -196,6 +202,8 @@ async function getCompany(domain) {
 	if (cachedResponses[domain]) {
 		return cachedResponses[domain];
 	}
+	console.log("return cached");
+	console.log(cachedResponses);
 
 	// If all else fails, return this
 	const baseReturn = {
@@ -248,7 +256,6 @@ async function getCompany(domain) {
 
 			// Clearbit had results, but nothing relevant. Try to see if we can make it work with placeholder results
 			// It may still fail though if there the logo_url data is invalid.
-			cachedResponses[domain] = domain;
 			return baseReturn;
 		}
 
@@ -297,7 +304,7 @@ async function getCompany(domain) {
 
 		// Naturalize name
 		retOrg.name = org.name.replace(/,?\s*(llc|inc|corp|co)\.?$/i, '').split(".")[0].split("(")[0].split("-")[0].split("|")[0].split(",")[0].trim();
-		retOrg.name = titleCase(retOrg.name);
+		retOrg.name = retOrg.name;
 
 		// Change up logo
 		if (org.logo_url != undefined && org.logo_url != "") {

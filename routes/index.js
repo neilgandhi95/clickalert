@@ -48,7 +48,7 @@ router.get('/neil/:template/:domain/:name', async function(req, res, next) {
 		}
 
 		const me = {
-			logo_url: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/msrhhprwrd683cdgb5gc"
+			logo_url: "/images/splash/logo_square.png"
 		}
 
 	  	res.render('page', { person: person, me: me });

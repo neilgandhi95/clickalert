@@ -57,6 +57,85 @@ router.get('/neil/:template/:domain/:name', async function(req, res, next) {
 	}
 });
 
+
+router.get('/neal/:template/:domain/:name', async function(req, res, next) {
+
+	console.log("----------")
+	// console.log(req.url);
+	// console.log(req.get('user-agent'));
+
+	printLogs(req);
+	// console.log(req.ipInfo);
+	// const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
+	// console.log(g.data.city + "/" + g.data.region);
+	  // .then(({ data }) => console.log(data))
+	console.log("----------")
+
+
+	const name = req.params.name;
+	const domain = req.params.domain;
+
+	try {
+		const org = await getCompany(domain);
+		cachedResponses[domain] = org;
+		console.log(org);
+
+		const person = {
+			name: name,
+			org: org
+		}
+
+		const me = {
+			logo_url: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/k9ebtjgcunuat2jzhx96"
+		}
+
+	  	res.render('neal', { person: person, me: me });
+	} catch(e) {
+		res.status(500).send("Something went wrong. Please email neil@paage.io");
+	}
+});
+
+
+router.get('/reid/:template/:domain/:name', async function(req, res, next) {
+
+	console.log("----------")
+	// console.log(req.url);
+	// console.log(req.get('user-agent'));
+
+	printLogs(req);
+	// console.log(req.ipInfo);
+	// const g = await axios.get('http://ipwhois.app/json/' + req.ipInfo.ip);
+	// console.log(g.data.city + "/" + g.data.region);
+	  // .then(({ data }) => console.log(data))
+	console.log("----------")
+
+
+	const name = req.params.name;
+	const domain = req.params.domain;
+
+	try {
+		const org = await getCompany(domain);
+		cachedResponses[domain] = org;
+		console.log(org);
+
+		const person = {
+			name: name,
+			org: org
+		}
+
+		const me = {
+			logo_url: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/zkvoen2la3ouk32bevvt"
+		}
+
+	  	res.render('reid', { person: person, me: me });
+	} catch(e) {
+		res.status(500).send("Something went wrong. Please email neil@paage.io");
+	}
+});
+
+
+
+
 router.get('/ryan/:template/:name/:domain', async function(req, res, next) {
 
 	console.log("----------")

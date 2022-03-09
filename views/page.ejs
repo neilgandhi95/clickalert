@@ -41,197 +41,267 @@
 	
 	<!-- Tailwind -->
 	<link rel="stylesheet" href="/css/output.css?v=5">
+
+	<style type="text/css">
+		body {
+			/*background-image: url("https://clearbit-blog.ghost.io/content/images/2019/06/level-up.png");*/
+			/*background-image: url("https://pitch-assets.imgix.net/c4ccc0c0-8027-49e2-8fb2-f8b3ffaae86d?pitch-bytes=113173&pitch-content-type=image%2Fpng&w=2666&h=1500&fit=max&auto=format&q=100");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position-x: 50%;
+			background-position-y: 50%;*/
+			/*filter: brightness(110%) contrast(90%) saturate(150%);*/
+		}
+	</style>
 </head>
 
 
-<body class="overflow-x-hidden antialiased text-left">
+<!-- Gradient -->
+<div class="fixed inset-x-0 bottom-0 top-0 z-0 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+<!-- <div class="fixed inset-x-0 bottom-0 top-0 z-0 bg-gradient-to-r from-slate-700 to-gray-900"></div> -->
+<!-- <div class="fixed inset-x-0 bottom-0 top-0 z-0 bg-gradient-to-r from-cyan-600 to-blue-500"></div> -->
 
-	<!-- Nav -->
-	<!-- <nav class="sm:hidden">
-		<a href="/" class="text-slate-800 font-medium text-md hover:text-sky-500 transition" target="_blank">
-			<div class="flex items-center px-8 py-3 flex items-center">
-				<img src="/images/splash/logo_cropped.png" class="h-10 rounded-md border-4 border-white mr-2">
-				<span>Paage</span>
-			</div>
-		</a>
-	</nav> -->
+<div class="">
+	<body class="antialiased text-left relative text-white max-w-7xl mx-auto">
 
-
-	<!-- Profile photo -->
-	<div class="hidden lg:block text-sm border-b border-slate-200">
-		<div class="text-sm text-slate-700 px-12 flex items-center py-3 select-none max-w-6xl mx-auto">
-			<div class="flex-1 flex items-center">
-				<img src="/images/temp/me.png" class="rounded-full h-8">
-				<span class="ml-3">Neil Gandhi</span>
-			</div>
-			<div class="flex items-center">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-				</svg>
-				<span class="pl-2">805-791-7699</span>
-			</div>
-		</div>	
-	</div>
-
-
-
-	<!-- Cover banner -->
-	<section>
-
-		<!-- Title and logos -->
-		<div class="max-w-4xl mx-auto pt-28">
-
-			<!-- Logo -->
-			<div class="flex items-center justify-center transition duration-1000 space-x-24 opacity-0" data-replace='{ "opacity-0": "opacity-100", "space-x-24": "space-x-12"}'>
-				<div class="p-8 rounded-3xl border border-slate-100" id="container_logo_me">
-					<img id="logo_me" class="h-20 w-20 rounded-3xl" src="" crossorigin="anonymous">
+		<!-- Profile photo -->
+		<div class="hidden lg:block text-sm  border-slate-200 absolute top-0 left-0 right-0 uppercase tracking-widest">
+			<div class="text-sm text-slate-700 flex items-center pt-7 select-none max-w-7xl mx-auto text-white/80 font-medium ">
+				<div class="flex-1 flex items-center">
+					<img src="/images/temp/me.png" class="rounded-full h-8">
+					<span class="ml-3">Neil Gandhi</span>
 				</div>
-				<div class="p-8 rounded-3xl border border-slate-100" id="container_logo_them">
-					<img id="logo_them" class="h-20 w-20 rounded-3xl" src="" crossorigin="anonymous" data-replace='{ "opacity-0": "opacity-100"}'/>
+				<div class="flex items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+					</svg>
+					<span class="pl-2">805-791-7699</span>
 				</div>
-			</div>
-
-			<!-- Title -->
-			<h1 class="text-2xl tracking-tight font-bold text-slate-800 sm:text-5xl md:text-6xl mt-16 text-center">Personalize outreach at <%-person.org.name%></h1>
-			<p class="mt-5 text-center text-slate-600 leading-relaxed text-2xl">Point each prospect to the right resources <span class="capitalize"><%-person.name%></span></p>
+			</div>	
 		</div>
-	</section>
 
 
-	<!-- User content -->
-	<div class="space-y-24 md:space-y-36 mt-24 px-8">
+		<!-- Navigation -->
+		<section class="fixed top-1/2 transform -translate-y-1/2 text-left w-64">
+			<ul class="space-y-5 text-base font-medium text-white border-l-4 border-white/10 relative" id="toc">
+				<li class="pl-8 cursor-pointer transition ease-in opacity-100 hover:opacity-100">Intro</li>
+				<li class="pl-8 cursor-pointer transition ease-in opacity-50 hover:opacity-100">Product Demo</li>
+				<li class="pl-8 cursor-pointer transition ease-in opacity-50 hover:opacity-100">Testimonials</li>
+				<li class="pl-8 cursor-pointer transition ease-in opacity-50 hover:opacity-100">Customers</li>
+				<li class="pl-8 cursor-pointer transition ease-in opacity-50 hover:opacity-100">Use Cases for <%- person.org.name %></li>
+				<li class="pl-8 cursor-pointer transition ease-in opacity-50 hover:opacity-100">Calendar</li>
+			</ul>
+			<div class="absolute w-1 bg-white top-0 rounded" id="toc_thumb">
+					
+				</div>
 
-		<!-- Video -->
-		<section class="max-w-4xl mx-auto">
-			<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/fa479f5620ff425c90ec0cd9f6e087bf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 		</section>
 
-		<!-- Logos -->
-		<section class="max-w-4xl mx-auto">
 
-			<div class="flex items-center">
-				<div class="h-0.5 bg-slate-200 flex-1"></div>
-				<span class="uppercase font-semibold text-slate-900 tracking-wide px-16 text-lg">We're trusted by</span>
-				<div class="h-0.5 bg-slate-200 flex-1"></div>
-			</div>
-			<div class="flex items-center justify-center h-20 mx-auto space-x-10 mt-12">
-				<img class="rounded-2xl h-full" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/ohsxr1q7rp02n18hli8v">
-		
-				<img class="rounded-2xl h-full" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/vtppiefgfwgmtcts5ajw">
-		
-				<img class="rounded-2xl h-full" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/xk4ewsz9ipareo7vjijb">
-		
-				<img class="rounded-2xl h-full" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/z2oij7tz8clombokaxar">
-		
-				<img class="rounded-2xl h-full" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/ahy8csgskghymkbsws9f">
-			</div>
-		</section>
+		<!-- Body -->
+		<div class="ml-64 z-20 relative px-10">
 
-		<!-- Quote option 1 -->
-		<section class="rounded-2xl max-w-4xl mx-auto drop-shadow-lg" id="testimonial">
-			<div class="w-full px-12 py-20 mx-auto text-gray-600 rounded-3xl bg-white drop-shadow-md">
-				<div class="mx-auto sm:text-center">
-					<div class="flex items-center justify-center mb-8">
-						<img src="https://i.imgur.com/pWSfHaV.jpeg" class="rounded-full h-14 border border-slate-200">
-						<span class="font-semibold text-3xl ml-4 text-slate-700">ShakeShack</span>
+			<!-- Hero -->
+			<section class="h-screen flex items-center justify-center" id="clearbit">
+				<div class="flex items-center justify-center max-w-6xl px-8 mx-auto">
+
+					<!-- Logos -->
+					<div class="flex items-start mr-28 p-14 bg-white/10 rounded-3xl">
+						<img id="logo_them" class="rounded-full inline-block" src="" crossorigin="anonymous" data-replace='{ "opacity-0": "opacity-100"}'>
 					</div>
-					<!-- <div class="text-indigo-500">
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-4 currentColor" viewBox="0 0 24 24"><path fill="currentColor" d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"></path></svg>
-					</div> -->
-					<p class="text-slate-800 text-2xl mt-10 mb-14 font-medium leading-relaxed">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua”</p>
-					<div class="flex items-center justify-center space-x-4">
-						<img src="https://productiv.com/wp-content/uploads/2021/10/profile-pic-mike.png" class="rounded-full h-16 border border-slate-200">
-						<div class="text-left">
-							<p class="text-slate-900 font-medium">Billy Bob</p>
-							<p class="text-slate-500 font-medium">Account Executive</p>
+
+
+					<!-- <div class="flex items-start mr-24">
+						<div class="bg-white/40 rounded-3xl inline-block p-6" >
+							<img class="w-40 rounded-3xl" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/msrhhprwrd683cdgb5gc" crossorigin="anonymous">
+						</div>
+						<div class="pt-44">
+							<div class="bg-white/40 rounded-3xl inline-block p-6" >
+								<img id="logo_them" class="w-40 rounded-3xl" src="" crossorigin="anonymous" data-replace='{ "opacity-0": "opacity-100"}'/>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</section>
-
-
-
-		<!-- Content + company profile -->
-		<!-- Content -->
-		<section class="max-w-4xl mx-auto space-y-14">
-
-			<!-- Headline -->
-			<!-- <section>
-				<p class="text-4xl text-slate-900 font-bold tracking-tight dark:text-slate-50 capitalize">Hey <%=person.name%>! 👋</p>
-			</section> -->
-
-			<section class="text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">Use Paage at <%=person.org.name%></p>
-				<p class="text-slate-700 text-lg">Make personalized one-pagers for all your prospects</p>
-			</section>
-
-
-			<section class="text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">One link for everything</p>
-				<p class="text-slate-700 text-lg">This makes it easy for your prospects to pass it around the company</p>
-			</section>
-
-			<!-- Feature -->
-			<section class="text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">Automatically personalized</p>
-				<p class="text-slate-700 text-lg">Link preview is automatically personalized to show your prospect's name and logo</p>
-			</section>
-
-			<section class="text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">Track everything</p>
-				<p class="text-slate-700 text-lg">Did they read your one-pager? How many times? How much time did they spend on the page? Which links on this page did they click? You'll have all the answers</p>
-			</section>
-
-			<section class="text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">Track sharing</p>
-				<p class="text-slate-700 text-lg">Track if, when, and who shared your one-pager in Slack, iMessage, FB Messenger, LinkedIn message</p>
-			</section>
-
-			<!-- <section class="max-w-3xl text-sky-500 text-md text-left">
-				<p class="text-2xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-3">Latest version, always</p>
-				<p class="text-slate-700 text-lg">Easily update your one-pager with your latest pitch</p>
-			</section> -->
-			
-
-			<!-- Case studies -->
-			<section class="max-w-3xl text-sky-500 text-md text-left">
-				<p class="text-3xl text-slate-900 font-bold tracking-tight dark:text-slate-50 mb-4">Share links</p>
-				<p class="text-slate-600 text-xl">Link to important resources</p>
-
-				<div class="space-y-4 text-sky-500 mt-4">
-					<div>
-						<a target="_blank" class="hover:text-sky-600" href="/">Case study #1</a>	
-					</div>
-					<div>
-						<a target="_blank" class="hover:text-sky-600" href="/">Case study #2</a>	
-					</div>
-					<div>
-						<a target="_blank" class="hover:text-sky-600" href="/">Case study #3</a>
-					</div>
+ -->
+					<!-- Text -->
+					<div class="w-1/2 flex-none text-left">
+						<p class="text-6xl text-white font-bold tracking-tight"> Hey, <span class="capitalize"><%-person.name%></span>!</p>
+						<p class="text-white/90 mt-8 text-xl leading-normal font-medium">
+							With Paage, you'll be able to make beautiful landing pages for your prospects at <%- person.org.name %> just like I did here. I'd love to show you more.
+						</p>
+						<div class="mt-12">
+							<!-- <button class="bg-white uppercase py-4 px-10 text-purple-500 shadow-md rounded-lg text-sm font-semibold">SCHEDULE A CALL</button> -->
+							<button class="bg-white/10 hover:bg-white/40 transition ring-2 ring-white/50 uppercase py-4 px-10 text-white rounded-lg text-sm font-bold">SCHEDULE A CALL</button>
+						</div>
+					</div>	
 				</div>
 			</section>
-		</section>
-	</div>
 
-	<!-- Calendar -->
-	<section class="bg-slate-50 border-t border-b border-slate-200 mt-24">
-		<section class="py-24" id="calendar">
 
-			<div class="px-4">
-				<p class="text-4xl text-slate-800 font-bold tracking-tight dark:text-slate-50 mb-4 text-center">Add your calendar</p>
-				<p class="text-slate-500 text-xl text-center">Embed from Calendly, Outreach, Chilipiper, more</p>
+			<!-- Page content -->
+			<div class="space-y-60 pb-44">
+
+				<!-- Video -->
+				<section class="max-w-3xl mx-auto">
+
+					<h1 class="mb-4 text-4xl tracking-tight font-extrabold">Product Demo</h1>
+					<p class="text-xl text-white/80">Quick demo of how our app works</p>
+
+					<div class="ring-1 ring-white/30 rounded-xl overflow-hidden mt-12">
+						<div class="rounded-lg overflow-hidden" style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/fa479f5620ff425c90ec0cd9f6e087bf" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+					</div>					
+				</section>
+
+
+				<!-- Quote -->
+				<section class="max-w-3xl mx-auto">
+
+					<h1 class="mb-4 text-4xl tracking-tight font-extrabold">Quotes</h1>
+					<p class="text-xl text-white/80">And many more from the leaders of Notion, Intercom</p>
+
+					<div class="space-y-16 mt-12">
+						<div class="rounded-xl bg-black/10 mx-auto relative">
+							<div class="absolute left-2 top-2 -bottom-2 -right-2 rounded-xl bg-white/20"></div>
+							<figure class="md:flex bg-white/90 text-white rounded-xl overflow-hidden p-8 md:p-0 dark:bg-slate-80 ring-1 ring-slate-900/5 z-20 relative">
+								<img class="h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/dftlxgiwn115x4jrpq1v" alt="">
+								<div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+									<blockquote>
+										<p class="text-lg font-medium text-slate-900">
+											“Tailwind CSS is the only framework that I've seen scale
+											on large teams. It’s easy to customize, adapts to any design,
+											and the build size is tiny. ”
+										</p>
+									</blockquote>
+									<figcaption class="font-medium">
+										<div class="text-indigo-500">
+											Sarah Dayan
+										</div>
+										<div class="text-slate-700">
+											Staff Engineer, Algolia
+										</div>
+									</figcaption>
+								</div>
+							</figure>
+						</div>
+
+						<div class="rounded-xl bg-black/10 mx-auto relative">
+							<div class="absolute left-2 top-2 -bottom-2 -right-2 rounded-xl bg-white/20"></div>
+							<figure class="md:flex bg-white/90 text-white rounded-xl overflow-hidden p-8 md:p-0 dark:bg-slate-80 ring-1 ring-slate-900/5 z-20 relative">
+								<img class="h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/v1440924046/wi1mlnkbn2jluko8pzkj.png" alt="">
+								<div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+									<blockquote>
+										<p class="text-lg font-medium text-slate-900">
+											“Tailwind CSS is the only framework that I've seen scale
+											on large teams. It’s easy to customize, adapts to any design,
+											and the build size is tiny. ”
+										</p>
+									</blockquote>
+									<figcaption class="font-medium">
+										<div class="text-indigo-500">
+											Sarah Dayan
+										</div>
+										<div class="text-slate-700">
+											Staff Engineer, Algolia
+										</div>
+									</figcaption>
+								</div>
+							</figure>
+						</div>
+					</div>
+				</section>
+
+				<!-- <section class="max-w-4xl mx-auto text-white text-left relative" id="testimonial">
+					<svg class="absolute w-20 top-0 left-0 text-white/20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298 252"><path d="M103.27 114.57H63.258c-4.7656 0-8.8125-1.668-12.148-5-3.332-3.336-5-7.383-5-12.148v-5.7148c0-12.625 4.4648-23.402 13.398-32.332 8.9336-8.9297 19.711-13.395 32.332-13.395h11.434c3.098 0 5.773-1.1328 8.039-3.3945 2.262-2.2617 3.395-4.9414 3.395-8.0391l-.004-22.867c0-3.0977-1.133-5.7773-3.395-8.0391C109.048 1.3788 106.368.246 103.27.246H91.8361c-12.387 0-24.203 2.41411-35.457 7.23441-11.254 4.82419-20.988 11.34399-29.207 19.56199-8.2188 8.2148-14.734 17.949-19.559 29.203-4.825 11.254-7.2344 23.074-7.2344 35.461V217.456c0 9.532 3.33199 17.625 10.004 24.297 6.668 6.668 14.77 10.004 24.297 10.004h68.5983c9.527 0 17.625-3.336 24.293-10.004 6.668-6.668 10.004-14.766 10.004-24.297l-.004-68.594c0-9.527-3.336-17.625-10.008-24.297-6.668-6.664-14.766-10-24.293-10v.005ZM287.62 124.57c-6.668-6.668-14.766-10.004-24.293-10.004h-40.012c-4.762 0-8.812-1.668-12.145-5-3.336-3.336-5-7.383-5-12.148v-5.7148c0-12.625 4.465-23.402 13.395-32.332 8.93-8.9297 19.707-13.395 32.336-13.395h11.43c3.098 0 5.777-1.1328 8.039-3.3945 2.262-2.2617 3.395-4.9414 3.395-8.0391l-.004-22.863c0-3.0977-1.133-5.7773-3.395-8.0391-2.262-2.2617-4.941-3.3945-8.039-3.3945h-11.43c-12.391 0-24.207 2.41411-35.465 7.23441-11.25 4.82419-20.984 11.34399-29.203 19.56199-8.219 8.2148-14.738 17.949-19.562 29.203-4.82 11.254-7.234 23.074-7.234 35.461V217.456c0 9.532 3.336 17.625 10.004 24.297 6.668 6.668 14.766 10.004 24.293 10.004h68.594c9.531 0 17.625-3.336 24.293-10.004 6.672-6.668 10.004-14.766 10.004-24.297v-68.594c0-9.527-3.332-17.625-10-24.297l-.001.005Z" fill="currentColor"/></svg>
+
+					<p class="text-3xl font-medium leading-snug tracking-tight pt-10 pl-6">From notifications on desktop browsers to targeted deep-links into our SportsWire app, OneSignal has made engaging our readers fast, simple and effective.</p>
+					<div class="flex items-center justify-start space-x-8 pl-6 mt-16">
+						<img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/dftlxgiwn115x4jrpq1v" class="rounded-full h-24 shadow-sm">
+						<div class="text-left tracking-widest uppercase">
+							<p class="font-bold text-xl">Billy Bob</p>
+							<p class="font-medium text-sm mt-1">Account Executive, Intercom</p>
+						</div>
+					</div>
+				</section> -->
+
+
+				<!-- Logos -->
+				<section class="max-w-3xl mx-auto">
+
+					<h1 class="mb-4 text-4xl tracking-tight font-extrabold">Loved by customers</h1>
+					<p class="text-xl text-white/80">Especially those in your industry</p>
+
+					<div class="inline-block rounded-3xl rounded-3xl p-6 ring-1 ring-white/50 z-20 bg-white/20 mt-12">
+						<div class="flex items-center justify-center relative space-x-8">
+							<img class="rounded-2xl shadow-sm h-20" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/ohsxr1q7rp02n18hli8v">
+						
+							<img class="rounded-2xl shadow-sm h-20" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/vtppiefgfwgmtcts5ajw">
+					
+							<img class="rounded-2xl shadow-sm h-20" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/xk4ewsz9ipareo7vjijb">
+					
+							<img class="rounded-2xl shadow-sm h-20" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/z2oij7tz8clombokaxar">
+					
+							<img class="rounded-2xl shadow-sm h-20" src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/ahy8csgskghymkbsws9f">
+						</div>
+					</div>
+				</section>
+
+
+
+				<!-- User content -->
+				<section class="max-w-3xl mx-auto text-left">
+
+					<h1 class="mb-4 text-4xl tracking-tight font-extrabold">Use cases for <%- person.org.name%></h1>
+					<p class="text-xl text-white/80">Elevate your outbound</p>
+
+					<div class="space-y-16 mt-12">
+						<section class="pl-6 border-l-4 border-black/20">
+							<p class="text-xl font-bold tracking-tight dark:text-slate-50 mb-1 leading-snug">Use Paage at <%=person.org.name%></p>
+							<p class="text-white/70 font-medium text-base">Make personalized one-pagers for all your prospects</p>
+						</section>
+
+
+						<section class="pl-6 border-l-4 border-black/20">
+							<p class="text-xl font-bold tracking-tight dark:text-slate-50 mb-1 leading-snug">One link for everything</p>
+							<p class="text-white/70 font-medium text-base">This makes it easy for your prospects to pass it around the company</p>
+						</section>
+
+						<!-- Feature -->
+						<section class="pl-6 border-l-4 border-black/20">
+							<p class="text-xl font-bold tracking-tight dark:text-slate-50 mb-1 leading-snug">Automatically personalized</p>
+							<p class="text-white/70 font-medium text-base">Link preview is automatically personalized to show your prospect's name and logo</p>
+						</section>
+
+						<section class="pl-6 border-l-4 border-black/20">
+							<p class="text-xl font-bold tracking-tight dark:text-slate-50 mb-1 leading-snug">Track everything</p>
+							<p class="text-white/70 font-medium text-base">Did they read your one-pager? How many times? How much time did they spend on the page? Which links on this page did they click? You'll have all the answers</p>
+						</section>
+
+						<section class="pl-6 border-l-4 border-black/20">
+							<p class="text-xl font-bold tracking-tight dark:text-slate-50 mb-1 leading-snug">Track sharing</p>
+							<p class="text-white/70 font-medium text-base">Track if, when, and who shared your one-pager in Slack, iMessage, FB Messenger, LinkedIn message</p>
+						</section>
+
+					</div>
+				</section>
+
+				<!-- Calendar -->
+				<section class="">
+					<section class="" id="calendar">
+
+						<!-- <div class="px-4">
+							<h1 class="mb-4 text-3xl tracking-tight font-extrabold">Add your Calendar</h1>
+							<p class="text-lg text-white/80">From Calendly, Chilipiper, more</p>
+						</div> -->
+
+						<div>
+							<div class="calendly-inline-widget" data-url="https://calendly.com/neil-paage/30min?hide_gdpr_banner=1" style="min-width:320px;height:750px;"></div>
+							<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+						</div>
+					</section>
+				</section>
 			</div>
-
-			<div class="mt-6">
-				<div class="calendly-inline-widget" data-url="https://calendly.com/neil-paage/30min?hide_gdpr_banner=1" style="min-width:320px;height:750px;"></div>
-				<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-			</div>
-		</section>
-	</section>
-
-</body>
-
+		</div>
+	</body>
+</div>
 
 <!-- Blurred image -->
 <script src="https://unpkg.com/fast-average-color/dist/index.min.js"></script>
@@ -255,43 +325,45 @@
 
 	var bgSet = needBackground.length;
 	function setBackground(elem) {
-		console.log(elem);
 		$("#logo_" + elem.id).one('load', function() {
-			colorCover(elem.id);
+			// colorCover(elem.id);
 
 			bgSet -= 1;
 			if (bgSet == 0) {
-				animateIn();
+				// animateIn();
 			}
 		}).on('error', function(e) {
-			colorCover();
+			// colorCover();
 		}).attr('src', elem.value);
 	}
 
 
 
-	function colorCover(personId) {
-		const fac = new FastAverageColor();
-		const container = document.getElementById("container_logo_" + personId);
+	// function colorCover(personId) {
+	// 	const fac = new FastAverageColor();
+	// 	const container = document.getElementById("container_logo_" + personId);
 
-		const color = fac.getColor(document.getElementById("logo_" + personId), {algorithm: "simple"});
-		container.style.backgroundColor = color.hex + "1A";
-		// container.style.color = color.isDark ? '#fff' : '#000';		
-		console.log(color);
-	}
+	// 	const color = fac.getColor(document.getElementById("logo_" + personId), {algorithm: "dominant"});
+	// 	// container.style.backgroundColor = color.hex + "1A";
+	// 	container.style.backgroundColor = color.hex;
+	// 	// container.style.color = color.isDark ? '#fff' : '#000';		
+	// 	console.log(color);
+	// }
 
-	function animateIn() {
-		var replacers = document.querySelectorAll('[data-replace]');
-		for(var i=0; i<replacers.length; i++){
-			let replaceClasses = JSON.parse(replacers[i].dataset.replace.replace(/'/g, '"'));
-			Object.keys(replaceClasses).forEach(function(key) {
-				replacers[i].classList.remove(key);
-				replacers[i].classList.add(replaceClasses[key]);
-			});
-		}
-	}
+	// function animateIn() {
+	// 	var replacers = document.querySelectorAll('[data-replace]');
+	// 	for(var i=0; i<replacers.length; i++){
+	// 		let replaceClasses = JSON.parse(replacers[i].dataset.replace.replace(/'/g, '"'));
+	// 		Object.keys(replaceClasses).forEach(function(key) {
+	// 			replacers[i].classList.remove(key);
+	// 			replacers[i].classList.add(replaceClasses[key]);
+	// 		});
+	// 	}
+	// }
 
 </script>
+
+<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript">

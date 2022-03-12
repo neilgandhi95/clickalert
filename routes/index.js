@@ -48,7 +48,7 @@ router.get('/neil/:template/:domain/:name', async function(req, res, next) {
 		}
 
 		const me = {
-			logo_url: "/images/splash/logo_square.png"
+			logo_url: "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/022018/hooli.jpg?g0WbCOl20sZupevIewoHqF5g3uC9ZNCP&itok=09Zgymrh"
 		}
 
 	  	res.render('page', { person: person, me: me });

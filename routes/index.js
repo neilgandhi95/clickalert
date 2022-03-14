@@ -161,16 +161,19 @@ router.get('/ryan/:template/:name/:domain', async function(req, res, next) {
 });
 
 
-router.get('/avery/:email', async function(req, res, next) {
-	const email = req.params.email;
+router.get('/editor', async function(req, res, next) {
+	// const email = req.params.email;
 
-	try {
-		const person = await enrichContact(email);
+	// try {
+	// 	const person = await enrichContact(email);
 
-	  	res.render('avery', { person: person });
-	} catch(e) {
-		res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
-	}
+	  	
+	// } catch(e) {
+	// 	res.status(500).send("Something went wrong. Please email neil@onepagekit.com");
+	// }
+
+	res.render('editor');
+
 });
 
 
